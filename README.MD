@@ -79,6 +79,7 @@
     - Reference:
     - Example: `--import-to-chrome`
     - Description: Import bookmarks into Chrome browser.
+    - ⚠️Warning: **Using this function will overwrite the bookmarks in the Chrome browser. Please make a backup yourself. After the import is successful, you need to restart the Chrome browser to see the imported bookmarks.**
         - `chrome-bookmarks-file`
             - Default: `~/Library/Application Support/Google/Chrome/Default/Bookmarks`
             - Reference:
@@ -94,6 +95,7 @@
     - Reference:
     - Example: `--import-to-edge`
     - Description: Import bookmarks into Edge browser.
+    - ⚠️Warning: **Using this function will overwrite the bookmarks in the Edge browser. Please make a backup yourself. After the import is successful, you need to restart the Edge browser to see the imported bookmarks.**
         - `edge-bookmarks-file`
             - Default: `~/Library/Application Support/Microsoft Edge/Default/Bookmarks`
             - Reference:
