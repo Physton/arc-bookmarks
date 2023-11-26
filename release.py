@@ -22,7 +22,7 @@ if os.path.exists(release_path):
 # git clone
 os.system(f'git clone {GITHUB} {release_path}')
 
-# 读取 main.py 中的 VERSION = '0.0.1'
+# 读取 main.py 中的 VERSION = 'v0.0.1'
 with open(os.path.join(release_path, 'main.py'), 'r') as f:
     for line in f.readlines():
         if 'VERSION' in line:
@@ -41,9 +41,9 @@ repo = g.get_repo(REPO)
 
 try:
     # 创建标签
-    tag_name = f'v{version}'
+    tag_name = f'{version}'
     commit_sha = repo.get_commits()[0].sha  # 替换为要标记的提交的SHA
-    tag_message = 'Release v{version}'
+    tag_message = 'Release {version}'
     repo.create_git_tag(tag_name, tag_message, commit_sha, 'commit')
 
     # 创建引用（引用标签）
@@ -52,7 +52,7 @@ try:
     repo.create_git_ref(ref_name, ref_sha)
 
     # 创建发布
-    release_title = f'v{version}'  # 发布标题
+    release_title = f'{version}'  # 发布标题
     release_body = ''  # 发布正文
     release = repo.create_git_release(tag_name, release_title, release_body)
 

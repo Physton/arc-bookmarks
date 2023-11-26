@@ -3,7 +3,7 @@ import json
 import sys
 import requests
 
-VERSION = '0.0.1'
+VERSION = 'v0.0.1'
 REPO = 'Physton/arc-bookmarks'
 GITHUB = f'https://github.com/{REPO}'
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
     arguments = sys.argv
     arguments.pop(0)
 
-    print(f'arc-bookmarks v{VERSION}')
+    print(f'arc-bookmarks {VERSION}')
     print(f'Github: {GITHUB}')
     check_version()
     print('')
@@ -272,14 +272,14 @@ if __name__ == '__main__':
             if saveHtmlFile == '':
                 saveHtmlFile = 'bookmark.html'
             saveHtmlFile = os.path.expanduser(saveHtmlFile)
-        # elif argument == '--import-to-chrome':
-        #     importToChrome = True
-        # elif argument == '--import-to-firefox':
-        #     importToFirefox = True
-        # elif argument == '--import-to-safari':
-        #     importToSafari = True
-        # elif argument == '--import-to-edge':
-        #     importToEdge = True
+        elif argument == '--import-to-chrome':
+            importToChrome = True
+        elif argument == '--import-to-firefox':
+            importToFirefox = True
+        elif argument == '--import-to-safari':
+            importToSafari = True
+        elif argument == '--import-to-edge':
+            importToEdge = True
         elif argument == '--help':
             print_help()
             sys.exit()
