@@ -7,6 +7,7 @@
 [![GitHub license](https://img.shields.io/github/license/Physton/arc-bookmarks?style=flat-square)](https://github.com/Physton/arc-bookmarks/blob/master/LICENSE.md)
 [![GitHub commits](https://img.shields.io/github/last-commit/Physton/arc-bookmarks?style=flat-square)](https://github.com/Physton/arc-bookmarks/commits/main)
 [![Downloads total](https://img.shields.io/github/downloads/physton/arc-bookmarks/total?style=flat-square)](https://github.com/Physton/arc-bookmarks/releases)
+[![Latest release](https://img.shields.io/github/v/release/Physton/arc-bookmarks?style=flat-square)](https://github.com/Physton/arc-bookmarks/releases)
 
 <div align="center">
 
