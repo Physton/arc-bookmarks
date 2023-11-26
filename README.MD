@@ -14,8 +14,6 @@
 
 </div>
 
-Export sidebar data (bookmarks) from [Arc Browser](https://arc.net/).
-
 [arc-bookmarks](https://github.com/Physton/arc-bookmarks) is a Python script used to export sidebar data (bookmarks) from [Arc Browser](https://arc.net/) to HTML/JSON files. The HTML file can be imported into other browsers. Only applicable to MacOS.
 
 ----
