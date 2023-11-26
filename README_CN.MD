@@ -14,8 +14,6 @@
 
 </div>
 
-导出 [Arc 浏览器](https://arc.net/) 的侧边栏数据（收藏/书签）。
-
 [arc-bookmarks](https://github.com/Physton/arc-bookmarks) 是一个 [Python](https://www.python.org/) 脚本，用于导出 [Arc 浏览器](https://arc.net/) 的侧边栏数据（收藏/书签）到 html/json 文件。html 文件可用于导入到其他浏览器。仅适用于 MacOS。
 
 ----
