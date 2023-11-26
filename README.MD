@@ -18,7 +18,7 @@
 
 ----
 
-## Development Plan
+## Future
 
 - [x] Export to HTML bookmark file.
 - [x] Export to JSON file.
@@ -26,6 +26,7 @@
 - [x] Automatically import bookmarks into Edge browser.
 - [ ] Automatically import bookmarks into Firefox browser.
 - [ ] Automatically import bookmarks into Safari browser.
+- [ ] Import bookmarks from other browsers into the Arc browser sidebar.
 
 ## Usage
 
@@ -55,7 +56,7 @@
     python3 main.py --save-html=bookmark.html
     ```
 
-## Parameter Description
+## Parameters
 
 - `sidebar-file`
     - Default: `~/Library/Application Support/Arc/StorableSidebar.json`
