@@ -57,17 +57,51 @@
 
 ## Parameter Description
 
-| Parameter | Default | Description | Example |
-| --- | --- | --- | --- |
-| sidebar-file | ~/Library/Application Support/Arc/StorableSidebar.json | The path to the StorableSidebar.json file of Arc Browser. It is the file used to store the sidebar data of Arc Browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path. | --sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json" |
-| save-json | | Save bookmarks to a JSON file. | --save-json=bookmark.json |
-| save-html | | Save bookmarks to an HTML file. Can be imported into browsers. | --save-html=bookmark.html |
-| import-to-chrome | | Import bookmarks into Chrome browser. | --import-to-chrome |
-| chrome-bookmarks-file | ~/Library/Application Support/Google/Chrome/Default/Bookmarks | The path to the Bookmarks file of Chrome browser. It is the file used to store the bookmarks of Chrome browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path. | --chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks" |
-| chrome-import-node | bookmark_bar | The node to import bookmarks into the Chrome browser. The default is bookmark_bar. Can be imported into the bookmark_bar or other nodes. | --chrome-import-node=bookmark_bar |
-| import-to-edge | | Import bookmarks into Edge browser. | --import-to-edge |
-| edge-bookmarks-file | ~/Library/Application Support/Microsoft Edge/Default/Bookmarks | The path to the Bookmarks file of Edge browser. It is the file used to store the bookmarks of Edge browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path. | --edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks" |
-| edge-import-node | bookmark_bar | The node to import bookmarks into the Edge browser. The default is bookmark_bar. Can be imported into the bookmark_bar or other nodes. | --edge-import-node=bookmark_bar |
+- `sidebar-file`
+    - Default: `~/Library/Application Support/Arc/StorableSidebar.json`
+    - Reference:
+    - Example: `--sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json"`
+    - Description: The path to the `StorableSidebar.json` file of Arc Browser. It is the file used to store the sidebar data of Arc Browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path.
+- `save-json`
+    - Default:
+    - Reference: `~/Downloads/bookmark.json`
+    - Example: `--save-json=bookmark.json`
+    - Description: Save bookmarks to a JSON file.
+- `save-html`
+    - Default:
+    - Reference: `~/Downloads/bookmark.html`
+    - Example: `--save-html=bookmark.html`
+    - Description: Save bookmarks to an HTML file. Can be imported into browsers.
+- `import-to-chrome`
+    - Default:
+    - Reference:
+    - Example: `--import-to-chrome`
+    - Description: Import bookmarks into Chrome browser.
+        - `chrome-bookmarks-file`
+            - Default: `~/Library/Application Support/Google/Chrome/Default/Bookmarks`
+            - Reference:
+            - Example: `--chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks"`
+            - Description: The path to the `Bookmarks` file of Chrome browser. It is the file used to store the bookmarks of Chrome browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path.
+        - `chrome-import-node`
+            - Default: `bookmark_bar`
+            - Reference: `bookmark_bar`, `other`
+            - Example: `--chrome-import-node=bookmark_bar`
+            - Description: The node to import bookmarks into the Chrome browser. The default is `bookmark_bar`.
+- `import-to-edge`
+    - Default:
+    - Reference:
+    - Example: `--import-to-edge`
+    - Description: Import bookmarks into Edge browser.
+        - `edge-bookmarks-file`
+            - Default: `~/Library/Application Support/Microsoft Edge/Default/Bookmarks`
+            - Reference:
+            - Example: `--edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks"`
+            - Description: The path to the `Bookmarks` file of Edge browser. It is the file used to store the bookmarks of Edge browser. In general, you don't need to specify this parameter. If not specified, the program will use the default path.
+        - `edge-import-node`
+            - Default: `bookmark_bar`
+            - Reference: `bookmark_bar`, `other`
+            - Example: `--edge-import-node=bookmark_bar`
+            - Description: The node to import bookmarks into the Edge browser. The default is `bookmark_bar`.
 
 ## Examples
 
