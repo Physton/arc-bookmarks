@@ -3,7 +3,7 @@ import json
 import sys
 import requests
 
-VERSION = 'v0.0.1'
+VERSION = 'v0.0.2'
 REPO = 'Physton/arc-bookmarks'
 GITHUB = f'https://github.com/{REPO}'
 
