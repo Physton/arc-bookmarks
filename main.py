@@ -1,9 +1,10 @@
 import os
 import json
 import sys
+import time
 import requests
 
-VERSION = 'v0.0.2'
+VERSION = 'v0.0.3'
 REPO = 'Physton/arc-bookmarks'
 GITHUB = f'https://github.com/{REPO}'
 
@@ -172,6 +173,41 @@ def bookmarks2html(bookmarks):
     html += '</DL><p>\n'
     return html
 
+def bookmarks2chrome(bookmarks):
+    chromeBookmarks = {
+        'children': [],
+        'date_added': '0',
+        'date_last_used': '0',
+        'date_modified': '0',
+        'guid': '',
+        'id': '1',
+        'name': 'Bookmarks bar',
+        'type': 'folder',
+    }
+    def _bookmarks2chrome(bookmarks, id = 0):
+        chromeBookmarks = []
+        for bookmark in bookmarks:
+            id += 1
+            chromeBookmarkItem = {
+                'date_added': '0',
+                'date_last_used': '0',
+                'date_modified': '0',
+                'guid': bookmark['id'],
+                'id': id,
+                'name': bookmark['title'],
+                'type': 'folder',
+            }
+            if bookmark['children'] and len(bookmark['children']) > 0:
+                chromeBookmarkItem['children'] = _bookmarks2chrome(bookmark['children'], id)
+                chromeBookmarkItem['type'] = 'folder'
+            else:
+                chromeBookmarkItem['type'] = 'url'
+                chromeBookmarkItem['url'] = bookmark['url']
+            chromeBookmarks.append(chromeBookmarkItem)
+        return chromeBookmarks
+    chromeBookmarks['children'] = _bookmarks2chrome(bookmarks, 1)
+    return chromeBookmarks
+
 def check_version():
     try:
         response = requests.get(f'https://api.github.com/repos/{REPO}/releases/latest', timeout=5)
@@ -188,10 +224,6 @@ def print_help():
         commander = os.path.basename(sys.executable)
 
     '''
-    --import-to-chrome
-        Import bookmarks into Chrome browser.
-        将书签导入到 Chrome 浏览器中。
-
     --import-to-firefox
         Import bookmarks into Firefox browser.
         将书签导入到 Firefox 浏览器中。
@@ -199,16 +231,6 @@ def print_help():
     --import-to-safari
         Import bookmarks into Safari browser.
         将书签导入到 Safari 浏览器中。
-
-    --import-to-edge
-        Import bookmarks into Edge browser.
-        将书签导入到 Edge 浏览器中。
-
-    {commander} --import-to-chrome
-    {commander} --import-to-firefox
-    {commander} --import-to-safari
-    {commander} --import-to-edge
-    {commander} --save-html=bookmark.html --import-to-chrome --import-to-safari --import-to-edge
     '''
 
     print(f'''Use: {commander} [options]
@@ -227,11 +249,45 @@ Options:
         Save bookmarks to html file. Can be used to import into the browser.
         将书签保存到 html 文件中。可用于导入到浏览器中。
 
+    --import-to-chrome
+        Import bookmarks into Chrome browser.
+        将书签导入到 Chrome 浏览器中。
+
+        --chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks"
+            The path of Bookmarks file of Chrome browser. It is a file used to store the bookmarks of Chrome browser.
+            In general, you don't need to specify this parameter. If you don't specify this parameter, the program will use the default path.
+            Chrome 浏览器的 Bookmarks 文件路径。它是用于存储 Chrome 浏览器的书签的文件。
+            一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。
+
+        --chrome-import-node=bookmark_bar
+            The node where the bookmarks are imported into Chrome browser. The default is bookmark_bar.
+            Can be imported into bookmark_bar or other nodes.
+            将书签导入到 Chrome 浏览器中的节点。默认为 bookmark_bar。
+            可以导入到 bookmark_bar 或 other 节点中。
+
+    --import-to-edge
+        Import bookmarks into Edge browser.
+        将书签导入到 Edge 浏览器中。
+
+        --edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks"
+            The path of Favorites file of Edge browser. It is a file used to store the bookmarks of Edge browser.
+            In general, you don't need to specify this parameter. If you don't specify this parameter, the program will use the default path.
+            Edge 浏览器的 Favorites 文件路径。它是用于存储 Edge 浏览器的书签的文件。
+            一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。
+
+        --edge-import-node=bookmark_bar
+            The node where the bookmarks are imported into Edge browser. The default is bookmark_bar.
+            Can be imported into bookmark_bar or other nodes.
+            将书签导入到 Edge 浏览器中的节点。默认为 bookmark_bar。
+            可以导入到 bookmark_bar 或 other 节点中。
+
 Examples:
     {commander} --save-json=bookmark.json
     {commander} --save-html=bookmark.html
     {commander} --save-json=bookmark.json --save-html=bookmark.html
     {commander} --sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json" --save-json=bookmark.json --save-html=bookmark.html
+    {commander} --import-to-chrome
+    {commander} --import-to-chrome --import-to-edge
     ''')
 
 if __name__ == '__main__':
@@ -253,9 +309,13 @@ if __name__ == '__main__':
     saveHtml = False
     saveHtmlFile = 'bookmark.html'
     importToChrome = False
+    importChromeNode = 'bookmark_bar' # bookmark_bar, other
+    chromeBookmarksFile = '~/Library/Application Support/Google/Chrome/Default/Bookmarks'
+    importToEdge = False
+    importEdgeNode = 'bookmark_bar' # bookmark_bar, other
+    edgeBookmarksFile = '~/Library/Application Support/Microsoft Edge/Default/Bookmarks'
     importToFirefox = False
     importToSafari = False
-    importToEdge = False
     for argument in arguments:
         if argument.startswith('--sidebar-file='):
             SidebarFile = argument.replace('--sidebar-file=', '')
@@ -274,12 +334,28 @@ if __name__ == '__main__':
             saveHtmlFile = os.path.expanduser(saveHtmlFile)
         elif argument == '--import-to-chrome':
             importToChrome = True
+        elif argument.startswith('--chrome-bookmarks-file='):
+            chromeBookmarksFile = argument.replace('--chrome-bookmarks-file=', '')
+            chromeBookmarksFile = os.path.expanduser(chromeBookmarksFile)
+        elif argument.startswith('--chrome-import-node='):
+            importChromeNode = argument.replace('--chrome-import-node=', '')
+            if importChromeNode not in ['bookmark_bar', 'other']:
+                print_error(f'Unknown chrome import node: {importChromeNode}')
+                sys.exit()
+        elif argument == '--import-to-edge':
+            importToEdge = True
+        elif argument.startswith('--edge-bookmarks-file='):
+            edgeBookmarksFile = argument.replace('--edge-bookmarks-file=', '')
+            edgeBookmarksFile = os.path.expanduser(edgeBookmarksFile)
+        elif argument.startswith('--edge-import-node='):
+            importEdgeNode = argument.replace('--edge-import-node=', '')
+            if importEdgeNode not in ['bookmark_bar', 'other']:
+                print_error(f'Unknown edge import node: {importEdgeNode}')
+                sys.exit()
         elif argument == '--import-to-firefox':
             importToFirefox = True
         elif argument == '--import-to-safari':
             importToSafari = True
-        elif argument == '--import-to-edge':
-            importToEdge = True
         elif argument == '--help':
             print_help()
             sys.exit()
@@ -305,5 +381,43 @@ if __name__ == '__main__':
                 print_success(f'Save html file success: {saveHtmlFile}')
         except Exception as e:
             print_error(f'Save html file failed: {e}')
+
+    if importToChrome:
+        chromeBookmarksFile = os.path.expanduser(chromeBookmarksFile)
+        if not os.path.exists(chromeBookmarksFile):
+            print_error(f'Chrome bookmarks file not exists: {chromeBookmarksFile}')
+        try:
+            chromeBookmarks = bookmarks2chrome(bookmarks)
+            with open(chromeBookmarksFile, 'r', encoding='utf-8') as f:
+                chromeBookmarksJson = json.load(f)
+                if importChromeNode == 'bookmark_bar':
+                    chromeBookmarksJson['roots']['bookmark_bar']['children'] = chromeBookmarks['children']
+                else:
+                    chromeBookmarksJson['roots']['other']['children'] = chromeBookmarks['children']
+            with open(chromeBookmarksFile, 'w', encoding='utf-8') as f:
+                json.dump(chromeBookmarksJson, f, indent=4, ensure_ascii=False)
+                print_success(f'Import bookmarks to Chrome success: {chromeBookmarksFile}')
+                print_success('Please restart Chrome to take effect.')
+        except Exception as e:
+            print_error(f'Import bookmarks to Chrome failed: {e}')
+
+    if importToEdge:
+        edgeBookmarksFile = os.path.expanduser(edgeBookmarksFile)
+        if not os.path.exists(edgeBookmarksFile):
+            print_error(f'Edge bookmarks file not exists: {edgeBookmarksFile}')
+        try:
+            chromeBookmarks = bookmarks2chrome(bookmarks)
+            with open(edgeBookmarksFile, 'r', encoding='utf-8') as f:
+                edgeBookmarksJson = json.load(f)
+                if importEdgeNode == 'bookmark_bar':
+                    edgeBookmarksJson['roots']['bookmark_bar']['children'] = chromeBookmarks['children']
+                else:
+                    edgeBookmarksJson['roots']['other']['children'] = chromeBookmarks['children']
+            with open(edgeBookmarksFile, 'w', encoding='utf-8') as f:
+                json.dump(edgeBookmarksJson, f, indent=4, ensure_ascii=False)
+                print_success(f'Import bookmarks to Edge success: {edgeBookmarksFile}')
+                print_success('Please restart Edge to take effect.')
+        except Exception as e:
+            print_error(f'Import bookmarks to Edge failed: {e}')
 
     sys.exit()

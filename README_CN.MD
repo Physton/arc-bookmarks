@@ -22,10 +22,10 @@
 
 - [x] 导出到 html 书签文件。
 - [x] 导出到 json 文件。
-- [ ] 自动将书签导入到 Chrome 浏览器中。
+- [x] 自动将书签导入到 Chrome 浏览器中。
+- [x] 自动将书签导入到 Edge 浏览器中。
 - [ ] 自动将书签导入到 Firefox 浏览器中。
 - [ ] 自动将书签导入到 Safari 浏览器中。
-- [ ] 自动将书签导入到 Edge 浏览器中。
 
 ## 使用
 
@@ -62,6 +62,12 @@
 | sidebar-file | ~/Library/Application Support/Arc/StorableSidebar.json | Arc 浏览器的 StorableSidebar.json 文件路径。它是用于存储 Arc 浏览器的侧边栏数据的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json" |
 | save-json | | 将书签保存到 json 文件中。 | --save-json=bookmark.json |
 | save-html | | 将书签保存到 html 文件中。可用于导入到浏览器中。 | --save-html=bookmark.html |
+| import-to-chrome | | 将书签导入到 Chrome 浏览器中。 | --import-to-chrome |
+| chrome-bookmarks-file | ~/Library/Application Support/Google/Chrome/Default/Bookmarks | Chrome 浏览器的 Bookmarks 文件路径。它是用于存储 Chrome 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks" |
+| chrome-import-node | bookmark_bar | 将书签导入到 Chrome 浏览器中的节点。默认为 bookmark_bar。可以导入到 bookmark_bar 或 other 节点中。 | --chrome-import-node=bookmark_bar |
+| import-to-edge | | 将书签导入到 Edge 浏览器中。 | --import-to-edge |
+| edge-bookmarks-file | ~/Library/Application Support/Microsoft Edge/Default/Bookmarks | Edge 浏览器的 Bookmarks 文件路径。它是用于存储 Edge 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks" |
+| edge-import-node | bookmark_bar | 将书签导入到 Edge 浏览器中的节点。默认为 bookmark_bar。可以导入到 bookmark_bar 或 other 节点中。 | --edge-import-node=bookmark_bar |
 
 ## 示例
 
@@ -79,3 +85,15 @@
     ```bash
     ./arc-bookmarks --save-html=~/Downloads/bookmark.html --save-json=~/Downloads/bookmark.json
     ```
+
+- 将书签导入到 Chrome 浏览器中。
+    ```bash
+    ./arc-bookmarks --import-to-chrome
+    ```
+    **导入成功后，需要重启 Chrome 浏览器才能看到导入的书签。**
+
+- 将书签导入到 Chrome 和 Edge 浏览器中。
+    ```bash
+    ./arc-bookmarks --import-to-chrome --import-to-edge
+    ```
+    **导入成功后，需要重启 Chrome 和 Edge 浏览器才能看到导入的书签。**
