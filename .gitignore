@@ -1,4 +1,5 @@
-arc-bookmarks.spec
-build
-dist
-.env
+/arc-bookmarks.spec
+/build
+/dist
+/.env
+/venv

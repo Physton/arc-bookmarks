@@ -237,14 +237,15 @@ Examples:
 if __name__ == '__main__':
     arguments = sys.argv
     arguments.pop(0)
-    if len(arguments) == 0:
-        print_help()
-        sys.exit()
 
     print(f'arc-bookmarks v{VERSION}')
     print(f'Github: {GITHUB}')
     check_version()
     print('')
+
+    if len(arguments) == 0:
+        print_help()
+        sys.exit()
 
     SidebarFile = '~/Library/Application Support/Arc/StorableSidebar.json'
     saveJson = False
