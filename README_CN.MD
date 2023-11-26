@@ -57,17 +57,51 @@
 
 ## 参数说明
 
-| 参数 | 默认值 | 说明 | 示例 |
-| --- | --- | --- | --- |
-| sidebar-file | ~/Library/Application Support/Arc/StorableSidebar.json | Arc 浏览器的 StorableSidebar.json 文件路径。它是用于存储 Arc 浏览器的侧边栏数据的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json" |
-| save-json | | 将书签保存到 json 文件中。 | --save-json=bookmark.json |
-| save-html | | 将书签保存到 html 文件中。可用于导入到浏览器中。 | --save-html=bookmark.html |
-| import-to-chrome | | 将书签导入到 Chrome 浏览器中。 | --import-to-chrome |
-| chrome-bookmarks-file | ~/Library/Application Support/Google/Chrome/Default/Bookmarks | Chrome 浏览器的 Bookmarks 文件路径。它是用于存储 Chrome 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks" |
-| chrome-import-node | bookmark_bar | 将书签导入到 Chrome 浏览器中的节点。默认为 bookmark_bar。可以导入到 bookmark_bar 或 other 节点中。 | --chrome-import-node=bookmark_bar |
-| import-to-edge | | 将书签导入到 Edge 浏览器中。 | --import-to-edge |
-| edge-bookmarks-file | ~/Library/Application Support/Microsoft Edge/Default/Bookmarks | Edge 浏览器的 Bookmarks 文件路径。它是用于存储 Edge 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。 | --edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks" |
-| edge-import-node | bookmark_bar | 将书签导入到 Edge 浏览器中的节点。默认为 bookmark_bar。可以导入到 bookmark_bar 或 other 节点中。 | --edge-import-node=bookmark_bar |
+- `sidebar-file`
+    - 默认值：`~/Library/Application Support/Arc/StorableSidebar.json`
+    - 参考值：
+    - 示例：`--sidebar-file="~/Library/Application Support/Arc/StorableSidebar.json"`
+    - 说明：Arc 浏览器的 `StorableSidebar.json` 文件路径。它是用于存储 Arc 浏览器的侧边栏数据的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。
+- `save-json`
+    - 默认值：
+    - 参考值：`~/Downloads/bookmark.json`
+    - 示例：`--save-json=bookmark.json`
+    - 说明：将书签保存到 json 文件中。
+- `save-html`
+    - 默认值：
+    - 参考值：`~/Downloads/bookmark.html`
+    - 示例：`--save-html=bookmark.html`
+    - 说明：将书签保存到 html 文件中。可用于导入到浏览器中。
+- `import-to-chrome`
+    - 默认值：
+    - 参考值：
+    - 示例：`--import-to-chrome`
+    - 说明：将书签导入到 Chrome 浏览器中。
+        - `chrome-bookmarks-file`
+            - 默认值：`~/Library/Application Support/Google/Chrome/Default/Bookmarks`
+            - 参考值：
+            - 示例：`--chrome-bookmarks-file="~/Library/Application Support/Google/Chrome/Default/Bookmarks"`
+            - 说明：Chrome 浏览器的 `Bookmarks` 文件路径。它是用于存储 Chrome 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。
+        - `chrome-import-node`
+            - 默认值：`bookmark_bar`
+            - 参考值：`bookmark_bar`、`other`
+            - 示例：`--chrome-import-node=bookmark_bar`
+            - 说明：将书签导入到 Chrome 浏览器中的节点。默认为 `bookmark_bar`。
+- `import-to-edge`
+    - 默认值：
+    - 参考值：
+    - 示例：`--import-to-edge`
+    - 说明：将书签导入到 Edge 浏览器中。
+        - `edge-bookmarks-file`
+            - 默认值：`~/Library/Application Support/Microsoft Edge/Default/Bookmarks`
+            - 参考值：
+            - 示例：`--edge-bookmarks-file="~/Library/Application Support/Microsoft Edge/Default/Bookmarks"`
+            - 说明：Edge 浏览器的 `Bookmarks` 文件路径。它是用于存储 Edge 浏览器的书签的文件。 一般情况下，不需要指定该参数。如果不指定该参数，程序会使用默认的路径。
+        - `edge-import-node`
+            - 默认值：`bookmark_bar`
+            - 参考值：`bookmark_bar`、`other`
+            - 示例：`--edge-import-node=bookmark_bar`
+            - 说明：将书签导入到 Edge 浏览器中的节点。默认为 `bookmark_bar`。
 
 ## 示例
 
