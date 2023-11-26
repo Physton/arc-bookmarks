@@ -79,11 +79,3 @@
     ```bash
     ./arc-bookmarks --save-html=~/Downloads/bookmark.html --save-json=~/Downloads/bookmark.json
     ```
-
-## Changelog
-
-- v0.0.2
-    - [BUG] Fix the issue of incorrect version reading.
-
-- v0.0.1
-    - Initial commit
