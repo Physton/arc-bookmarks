@@ -82,5 +82,8 @@
 
 ## Changelog
 
+- v0.0.2
+    - [BUG] Fix the issue of incorrect version reading.
+
 - v0.0.1
     - Initial commit
