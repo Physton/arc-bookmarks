@@ -79,6 +79,7 @@
     - 参考值：
     - 示例：`--import-to-chrome`
     - 说明：将书签导入到 Chrome 浏览器中。
+    - ⚠️警告：**使用此功能，将会覆盖 Chrome 浏览器中的书签。请自行做好备份。导入成功后，需要重启 Chrome 浏览器才能看到导入的书签。**
         - `chrome-bookmarks-file`
             - 默认值：`~/Library/Application Support/Google/Chrome/Default/Bookmarks`
             - 参考值：
@@ -94,6 +95,7 @@
     - 参考值：
     - 示例：`--import-to-edge`
     - 说明：将书签导入到 Edge 浏览器中。
+    - ⚠️警告：**使用此功能，将会覆盖 Edge 浏览器中的书签。请自行做好备份。导入成功后，需要重启 Edge 浏览器才能看到导入的书签。**
         - `edge-bookmarks-file`
             - 默认值：`~/Library/Application Support/Microsoft Edge/Default/Bookmarks`
             - 参考值：
