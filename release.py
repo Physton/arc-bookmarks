@@ -57,8 +57,13 @@ try:
     release = repo.create_git_release(tag_name, release_title, release_body)
 
     # 上传文件到发布
-    file_name = 'arc-bookmarks'
-    file_path = os.path.join(main_path, 'dist', file_name)
+    file_name = 'arc-bookmarks.macos.arm64.zip'
+    file_path = os.path.join(main_path, 'build', file_name)
+    file_path = os.path.abspath(file_path)
+    release.upload_asset(file_path, content_type='application/octet-stream', label=file_name)
+
+    file_name = 'arc-bookmarks.macos.x86_64.zip'
+    file_path = os.path.join(main_path, 'build', file_name)
     file_path = os.path.abspath(file_path)
     release.upload_asset(file_path, content_type='application/octet-stream', label=file_name)
 

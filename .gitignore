@@ -5,5 +5,6 @@
 /venv
 /release
 /.idea
+/venv.*
 /bookmark.html
 /bookmark.json

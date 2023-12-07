@@ -33,15 +33,27 @@
 
 ### Using the executable file (no Python environment required)
 
-1. Go to [Releases](https://github.com/Physton/arc-bookmarks/releases) and download [arc-bookmarks](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks).
-2. Open the system `Terminal` application.
-3. Add executable permission to the `arc-bookmarks` file.
+> For versions prior to v0.0.4, please refer to this document: [README](https://github.com/Physton/arc-bookmarks/tree/6ea6b782665f7c790511c3c0a3034809bd504d89#usage)
+
+1. Go to [Releases](https://github.com/Physton/arc-bookmarks/releases) and download according to your system version.
+    - [M1/M../arm64 (Apple Silicon)](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks.macos.arm64.zip)
+    - [x86_64 (Intel)](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks.macos.x86_64.zip)
+2. Unzip the `arc-bookmarks.macos.*.zip` file.
+3. Open the `Terminal` application on your system.
+4. Navigate to the `arc-bookmarks.macos.*` folder.
     ```bash
-    chmod +x ~/Downloads/arc-bookmarks
+    # Apple Silicon
+    cd ~/Downloads/arc-bookmarks.macos.arm64
+    # Intel
+    cd ~/Downloads/arc-bookmarks.macos.x86_64
     ```
-4. Execute the `arc-bookmarks` file.
+5. Add execution permissions to the `arc-bookmarks` file.
     ```bash
-    ~/Downloads/arc-bookmarks --save-html=~/Downloads/bookmark.html
+    chmod +x ./arc-bookmarks
+    ```
+6. Run the `arc-bookmarks` file.
+    ```bash
+    ./arc-bookmarks --save-html=~/Downloads/bookmark.html
     ```
 
 ### Using Python to run

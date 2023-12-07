@@ -1,0 +1,2 @@
+requests
+cx_Freeze

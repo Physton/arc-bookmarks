@@ -33,15 +33,27 @@
 
 ### 使用可执行文件（无需 python 环境）
 
-1. 前往 [Releases](https://github.com/Physton/arc-bookmarks/releases)，下载 [arc-bookmarks](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks) 。
-2. 打开系统 `终端` 应用程序。
-3. 为 `arc-bookmarks` 文件添加可执行权限。
+> v0.0.4 之前的版本，请查看此文档：[README](https://github.com/Physton/arc-bookmarks/blob/6ea6b782665f7c790511c3c0a3034809bd504d89/README_CN.MD#%E4%BD%BF%E7%94%A8)
+
+1. 前往 [Releases](https://github.com/Physton/arc-bookmarks/releases)，根据自己的系统版本下载。
+    - [M1/M../arm64 (Apple Silicon)](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks.macos.arm64.zip)
+    - [x86_64 (Intel)](https://github.com/Physton/arc-bookmarks/releases/latest/download/arc-bookmarks.macos.x86_64.zip)
+2. 解压缩 `arc-bookmarks.macos.*.zip` 文件。
+3. 打开系统 `终端` 应用程序。
+4. 进入 `arc-bookmarks.macos.*` 文件夹。
     ```bash
-    chmod +x ~/Downloads/arc-bookmarks
+    # Apple Silicon
+    cd ~/Downloads/arc-bookmarks.macos.arm64
+    # Intel
+    cd ~/Downloads/arc-bookmarks.macos.x86_64
     ```
-4. 执行 `arc-bookmarks` 文件。
+5. 为 `arc-bookmarks` 文件添加可执行权限。
     ```bash
-    ~/Downloads/arc-bookmarks --save-html=~/Downloads/bookmark.html
+    chmod +x ./arc-bookmarks
+    ```
+6. 执行 `arc-bookmarks` 文件。
+    ```bash
+    ./arc-bookmarks --save-html=~/Downloads/bookmark.html
     ```
 
 ### 使用 python 运行
